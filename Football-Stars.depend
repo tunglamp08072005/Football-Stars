@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1711386115 source:d:\tung_lam\c++\football-stars\ball.cpp
+	"Ball.h"
+	"Common_function.h"
+
+1711386115 d:\tung_lam\c++\football-stars\ball.h
+	"baseObject.h"
+
+1711210838 d:\tung_lam\c++\football-stars\baseobject.h
+	<SDL.h>
+	<string>
+
+1711383323 d:\tung_lam\c++\football-stars\common_function.h
+	<SDL.h>
+	<string>
+	<SDL_image.h>
+	<stdio.h>
+
+1711210350 source:d:\tung_lam\c++\football-stars\baseobject.cpp
+	"baseObject.h"
+
+1711383323 source:d:\tung_lam\c++\football-stars\common_function.cpp
+	"Common_function.h"
+	"MainObject.h"
+
+1711386482 d:\tung_lam\c++\football-stars\mainobject.h
+	"baseObject.h"
+	"Ball.h"
+
+1711386123 source:d:\tung_lam\c++\football-stars\main.cpp
+	"Common_function.h"
+	"MainObject.h"
+	"Ball.h"
+
+1711302245 source:d:\tung_lam\c++\football-stars\mainobject(02).cpp
+	"MainObject(02).h"
+
+1711302190 d:\tung_lam\c++\football-stars\mainobject(02).h
+	"Common_function.h"
+
+1711464806 source:d:\tung_lam\c++\football-stars\mainobject.cpp
+	"MainObject.h"
+	"Common_function.h"
+	<iostream>
+	<cmath>
+
