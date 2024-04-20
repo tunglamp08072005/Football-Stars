@@ -10,4 +10,5 @@ Cách chơi:
 - Khi điều khiển nhân vật va chạm với bóng thì quả bóng sẽ di chuyển.
 - Khi quả bóng vào khung thành của nhân vật thì sẽ tính điểm cho nhân vật kia.
 - Thời gian chơi game là 120s, khi kết thúc thì sẽ thoát khỏi chương trình.
- Đây là video về game mà mình đã làm: [Football-Stars.zip](https://github.com/tunglamp08072005/Football-Stars/files/15047809/Football-Stars.zip)
+ Đây là video về game mà mình đã làm: [Video game.zip](https://github.com/tunglamp08072005/Football-Stars/files/15047824/Video.game.zip)
+
