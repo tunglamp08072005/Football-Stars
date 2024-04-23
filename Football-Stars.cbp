@@ -19,6 +19,23 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../Common_function.cpp" />
+		<Unit filename="../Common_function.h" />
+		<Unit filename="../MainObject(02).cpp" />
+		<Unit filename="../MainObject(02).h" />
+		<Unit filename="../MainObject.cpp" />
+		<Unit filename="../MainObject.h" />
+		<Unit filename="../TextObject.cpp" />
+		<Unit filename="../TextObject.h" />
+		<Unit filename="../ball.cpp" />
+		<Unit filename="../ball.h" />
+		<Unit filename="../baseObject.cpp" />
+		<Unit filename="../baseObject.h" />
+		<Unit filename="../khungthanh(02).cpp" />
+		<Unit filename="../khungthanh(02).h" />
+		<Unit filename="../khungthanh.cpp" />
+		<Unit filename="../khungthanh.h" />
+		<Unit filename="../main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

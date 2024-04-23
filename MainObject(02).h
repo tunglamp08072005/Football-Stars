@@ -13,9 +13,9 @@ public:
     void HandleInputAction(SDL_Event events);
 
 private:
-    SDL_Rect rect_;
-    int x_val, y_val;
-    SDL_Surface* p_object_;
+    SDL_Rect rect_2;
+    int x_val2, y_val2;
+    SDL_Surface* p_object_2;
 };
 
 #endif /* MAINOBJECT02_H_ */

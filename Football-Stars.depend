@@ -1,46 +1,98 @@
 # depslib dependency file v1.0
-1711386115 source:d:\tung_lam\c++\football-stars\ball.cpp
-	"Ball.h"
+1712830039 source:d:\tung_lam\c++\football-stars\ball.cpp
+	"ball.h"
 	"Common_function.h"
 
-1711386115 d:\tung_lam\c++\football-stars\ball.h
+1712830039 d:\tung_lam\c++\football-stars\ball.h
 	"baseObject.h"
 
-1711210838 d:\tung_lam\c++\football-stars\baseobject.h
+1713585555 d:\tung_lam\c++\football-stars\baseobject.h
 	<SDL.h>
 	<string>
 
-1711383323 d:\tung_lam\c++\football-stars\common_function.h
+1713544292 d:\tung_lam\c++\football-stars\common_function.h
 	<SDL.h>
-	<string>
 	<SDL_image.h>
+	<SDL_mixer.h>
+	<string>
 	<stdio.h>
+	<SDL_ttf.h>
+	"TextObject.h"
 
-1711210350 source:d:\tung_lam\c++\football-stars\baseobject.cpp
+1712823196 source:d:\tung_lam\c++\football-stars\baseobject.cpp
 	"baseObject.h"
 
-1711383323 source:d:\tung_lam\c++\football-stars\common_function.cpp
+1713604132 source:d:\tung_lam\c++\football-stars\common_function.cpp
 	"Common_function.h"
 	"MainObject.h"
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	"TextObject.h"
+	"TextObject.h"
 
-1711386482 d:\tung_lam\c++\football-stars\mainobject.h
-	"baseObject.h"
+1712830039 d:\tung_lam\c++\football-stars\mainobject.h
+	"Common_function.h"
 	"Ball.h"
 
-1711386123 source:d:\tung_lam\c++\football-stars\main.cpp
+1713607679 source:d:\tung_lam\c++\football-stars\main.cpp
 	"Common_function.h"
 	"MainObject.h"
-	"Ball.h"
-
-1711302245 source:d:\tung_lam\c++\football-stars\mainobject(02).cpp
 	"MainObject(02).h"
+	"Ball.h"
+	"khungthanh.h"
+	"khungthanh(02).h"
+	"TextObject.h"
 
-1711302190 d:\tung_lam\c++\football-stars\mainobject(02).h
+1713112856 source:d:\tung_lam\c++\football-stars\mainobject(02).cpp
+	"MainObject(02).h"
 	"Common_function.h"
+	"khungthanh(02).h"
+	"khungthanh.h"
+	<cmath>
 
-1711464806 source:d:\tung_lam\c++\football-stars\mainobject.cpp
+1712823362 d:\tung_lam\c++\football-stars\mainobject(02).h
+	"Common_function.h"
+	"ball.h"
+
+1713112779 source:d:\tung_lam\c++\football-stars\mainobject.cpp
 	"MainObject.h"
 	"Common_function.h"
 	<iostream>
 	<cmath>
+
+1713027228 source:d:\tung_lam\c++\football-stars\khungthanh.cpp
+	"khungthanh.h"
+	"Common_function.h"
+	"ball.h"
+	"MainObject.h"
+	"MainObject(02).h"
+	"TextObject.h"
+
+1713026160 d:\tung_lam\c++\football-stars\khungthanh.h
+	"ball.h"
+	"Common_function.h"
+	"MainObject.h"
+	"MainObject(02).h"
+
+1713026160 d:\tung_lam\c++\football-stars\khungthanh(02).h
+	"ball.h"
+	"Common_function.h"
+	"MainObject.h"
+	"MainObject(02).h"
+
+1713027228 source:d:\tung_lam\c++\football-stars\khungthanh(02).cpp
+	"khungthanh(02).h"
+	"Common_function.h"
+	"ball.h"
+	"MainObject.h"
+	"MainObject(02).h"
+
+1713604132 source:d:\tung_lam\c++\football-stars\textobject.cpp
+	"TextObject.h"
+	"Common_function.h"
+
+1713587023 d:\tung_lam\c++\football-stars\textobject.h
+	"baseObject.h"
+	<string>
+	<SDL_ttf.h>
 

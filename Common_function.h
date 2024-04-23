@@ -43,6 +43,7 @@ namespace SDLCommonFunc {
 
     // Declaration of ApplySurface
     void ApplySurface(SDL_Surface* src, SDL_Surface* des, int x, int y);
+
 }
 
 #endif // COMMON_FUNCTION_H_
