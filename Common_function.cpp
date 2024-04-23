@@ -1,5 +1,9 @@
 #include "Common_function.h"
 #include "MainObject.h" // Include header file that contains nv1_surface declaration
+#include <SDL_mixer.h>
+#include <SDL_ttf.h>
+#include "TextObject.h"
+#include "TextObject.h"
 
 // Global variable definition
 SDL_Window* gWindow = NULL;
@@ -8,20 +12,160 @@ SDL_Surface* gPNGSurface = NULL;
 SDL_Surface* nv1_surface = NULL; // Declare nv1_surface here
 SDL_Surface* ball_surface = NULL; // Add this line for ball_surface
 SDL_Surface* nv2_surface = NULL;
+SDL_Surface* goal_surface = NULL; // Định nghĩa biến goal_surface ở đây
+SDL_Surface* goal02_surface = NULL;
+Mix_Music* gBackgroundMusic = NULL;
+Mix_Chunk* gSoccerKickSound = NULL;
+Mix_Chunk* gGoalCheeringSound = NULL;
+SDL_Surface* g_img_menu = NULL;
+
+bool SDLCommonFunc::CheckFocusWithRect(const int& x, const int& y, const SDL_Rect& rect)
+{
+    if(x >= rect.x && x <= rect.x + rect.w &&
+       y >= rect.y && y <= rect.y + rect.h)
+    {
+        return true;
+    }
+    return false;
+}
+
+int SDLCommonFunc::ShowMenu(SDL_Surface* des, TTF_Font* font) {
+    g_img_menu = loadSurface("start_menu_game.png");
+    if (g_img_menu == NULL) {
+        return 1;
+    }
+
+    int value;
+
+    const int kMenuItemNum = 2;
+    SDL_Rect pos_arr[kMenuItemNum];
+    pos_arr[0].x = 200;
+    pos_arr[0].y = 200;
+    pos_arr[1].x = 200;
+    pos_arr[1].y = 300;
+
+    TextObject text_menu[kMenuItemNum];
+
+    text_menu[0].SetText("Play Game");
+    text_menu[0].SetColor(TextObject::BLACK_TEXT);
+    text_menu[0].SetFont(font);
+    text_menu[0].SetPosition(pos_arr[0].x, pos_arr[0].y);
+
+    text_menu[1].SetText("Exit");
+    text_menu[1].SetColor(TextObject::BLACK_TEXT);
+    text_menu[1].SetFont(font);
+    text_menu[1].SetPosition(pos_arr[1].x, pos_arr[1].y);
+
+    bool selected[kMenuItemNum] = {false, false};
+    int xm = 0;
+    int ym = 0;
+
+    SDL_Event m_event;
+    bool quit_menu = false;
+    int menu_choice = -1; // Lựa chọn menu, ban đầu là -1 để không có lựa chọn nào được chọn
+
+    while (!quit_menu && menu_choice == -1) {
+        SDLCommonFunc::ApplySurface(g_img_menu, des, 0, 0);
+
+        for (int i = 0; i < kMenuItemNum; ++i) {
+            text_menu[i].CreateGameText(des); // Tạo văn bản để hiển thị
+        }
+
+        while (SDL_PollEvent(&m_event)) {
+            switch (m_event.type) {
+                case SDL_QUIT:
+                    quit_menu = true;
+                    value = 2;
+                    break;
+                case SDL_MOUSEMOTION:
+                    xm = m_event.motion.x;
+                    ym = m_event.motion.y;
+
+                    for (int i = 0; i < kMenuItemNum; i++) {
+                        if (SDLCommonFunc::CheckFocusWithRect(xm, ym, text_menu[i].GetRect())) {
+                            // Nếu chuột di chuyển qua vị trí của text menu
+                            if (!selected[i]) {
+                                selected[i] = true;
+                                text_menu[i].SetColor(TextObject::RED_TEXT);
+                            }
+                        }
+                        else {
+                            if (selected[i]) {
+                                selected[i] = false;
+                                text_menu[i].SetColor(TextObject::BLACK_TEXT);
+                            }
+                        }
+                    }
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    xm = m_event.button.x;
+                    ym = m_event.button.y;
+                    for (int i = 0; i < kMenuItemNum; i++) {
+                        if (CheckFocusWithRect(xm, ym, text_menu[i].GetRect())) {
+                            if (i == 0) { // Nút "Play Game"
+                                quit_menu = true; // Thoát khỏi menu sau khi chọn "Play Game"
+                                value = 1; // Trả về 1 để bắt đầu chơi game
+                            } else if (i == 1) { // Nút "Exit"
+                                quit_menu = true;
+                                value = 0; // Trả về 0 để thoát chương trình
+                            }
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        SDL_UpdateWindowSurface(gWindow);
+    }
+    // Trả về lựa chọn menu của người dùng
+    return value;
+}
 
 
 
+bool SDLCommonFunc::initSDL_Mixer() {
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+        return false;
+    }
+    gSoccerKickSound = Mix_LoadWAV("soccer-kick.mp3");
+    if (gSoccerKickSound == NULL) {
+        printf("Failed to load soccer-kick sound effect! SDL_mixer Error: %s\n", Mix_GetError());
+        return false;
+    }
+    return true;
+}
+
+// Giải phóng SDL_mixer
+void SDLCommonFunc::closeSDL_Mixer() {
+    Mix_CloseAudio();
+}
 
 bool SDLCommonFunc::loadMedia()
 {
     // Loading success flag
     bool success = true;
 
+    // Load goal cheering sound effect
+    gGoalCheeringSound = Mix_LoadWAV("free-crowd-cheering.mp3");
+    if (gGoalCheeringSound == NULL) {
+        printf("Failed to load goal cheering sound effect! SDL_mixer Error: %s\n", Mix_GetError());
+        success = false;
+    }
+
+    gBackgroundMusic = Mix_LoadMUS("background.mp3");
+    if (gBackgroundMusic == NULL) {
+        printf("Failed to load background music! SDL_mixer Error: %s\n", Mix_GetError());
+        success = false;
+    }
+
     // Load background image
-    gPNGSurface = loadSurface("field03(02).png");
+    gPNGSurface = loadSurface("field02.png");
     if (gPNGSurface == NULL)
     {
-        printf("Failed to load PNG image field03(02).png! SDL_image Error: %s\n", IMG_GetError());
+        printf("Failed to load PNG image field02.png! SDL_image Error: %s\n", IMG_GetError());
         success = false;
     }
 
@@ -44,16 +188,13 @@ bool SDLCommonFunc::loadMedia()
     }
 
     // Set the color key for nv2_surface to remove the background color
-    SDL_SetColorKey(nv2_surface, SDL_TRUE, SDL_MapRGB(nv2_surface->format, 0, 0, 0)); // Nhân vật màu đen
 
     // Trong hàm loadMedia của Common_function.cpp
 
-    // Set the coordinates for nv2.png
-    int nv2_x = SCREEN_WIDTH / 2 + 300; // Set the x coordinate
-    int nv2_y = SCREEN_HEIGHT / 2 - 100; // Set the y coordinate
+
 
     // Apply nv2.png onto the background at the specified coordinates
-    SDLCommonFunc::ApplySurface(nv2_surface, gPNGSurface, nv2_x, nv2_y);
+
 
 
     // Load ball image
@@ -72,7 +213,51 @@ bool SDLCommonFunc::loadMedia()
     int ball_y = SCREEN_HEIGHT / 2 - 25; // Set the y coordinate
 
     // Apply ball.png onto the background at the specified coordinates
-    SDLCommonFunc::ApplySurface(ball_surface, gPNGSurface, ball_x, ball_y);
+
+
+    // Load goal frame image (khungthanh.png)
+    goal_surface = loadSurface("khungthanh.png");
+    if (goal_surface == NULL)
+    {
+        printf("Failed to load goal frame image khungthanh.png! SDL_image Error: %s\n", IMG_GetError());
+        success = false;
+    }
+    else
+    {
+    // Set color key to remove background color (if needed)
+    SDL_SetColorKey(goal_surface, SDL_TRUE, SDL_MapRGB(goal_surface->format, 0, 0, 0));
+    }
+    // Set the color key for goal_surface to remove the background color (if needed)
+    // SDL_SetColorKey(goal_surface, SDL_TRUE, SDL_MapRGB(goal_surface->format, r, g, b));
+
+
+
+    // Load goal frame image (khungthanh(02).png)
+    goal02_surface = loadSurface("khungthanh(02).png");
+    if (goal02_surface == NULL)
+    {
+        printf("Failed to load goal frame image khungthanh(02).png! SDL_image Error: %s\n", IMG_GetError());
+        success = false;
+    }
+    else
+    {
+        // Set color key if needed to remove background
+         SDL_SetColorKey(goal02_surface, SDL_TRUE, SDL_MapRGB(goal02_surface->format, 0, 0, 0));
+    }
+
+    // Set the coordinates for khungthanh(02).png
+    int goal02_x = GOAL_2_X;
+    int goal02_y = GOAL_2_Y;
+
+    // Apply khungthanh(02).png onto the background at the specified coordinates
+    SDLCommonFunc::ApplySurface(goal02_surface, gPNGSurface, goal02_x, goal02_y);
+
+// Set the coordinates for khungthanh.png
+    int goal_x = GOAL_1_X; // Set the x coordinate
+    int goal_y = GOAL_1_Y; // Set the y coordinate
+
+    // Apply khungthanh.png onto the background at the specified coordinates
+    SDLCommonFunc::ApplySurface(goal_surface, gPNGSurface, goal_x, goal_y);
 
     return success;
 }
@@ -91,7 +276,12 @@ void SDLCommonFunc::close()
     SDL_DestroyWindow(gWindow);
     gWindow = NULL;
 
+    Mix_FreeChunk(gGoalCheeringSound);
+    gGoalCheeringSound = NULL;
 
+    TTF_CloseFont(g_font);
+    TTF_CloseFont(gameFont);
+    TTF_CloseFont(menuFont);
 
 
     // Quit SDL subsystems

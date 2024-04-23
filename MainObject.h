@@ -1,9 +1,8 @@
 #ifndef MAIN_OBJECT_H_
 #define MAIN_OBJECT_H_
 
-#include "baseObject.h"
+#include "Common_function.h"
 #include "Ball.h"
-
 
 #define WIDTH_MAIN_OBJECT 71
 #define HEIGHT_MAIN_OBJECT 93
@@ -20,11 +19,11 @@ public:
     bool CheckCollision(SDL_Rect a, SDL_Rect b);
     void HandleBallCollision(Ball& ball);
     void KickBall(Ball& ball);
-
+    void HandleMoveWithGoalLimit(); // Thêm khai báo của phương thức này
+    void HandleMoveWithGoalLimit02();
 private:
     int x_val;
     int y_val;
-    bool is_kicking;
     bool isMovingUp;
     bool isMovingDown;
     bool isMovingLeft;
