@@ -1,5 +1,5 @@
 #include "Common_function.h"
-#include "MainObject.h" // Include header file that contains nv1_surface declaration
+#include "MainObject.h"
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 #include "TextObject.h"
@@ -9,10 +9,10 @@
 SDL_Window* gWindow = NULL;
 SDL_Surface* gScreenSurface = NULL;
 SDL_Surface* gPNGSurface = NULL;
-SDL_Surface* nv1_surface = NULL; // Declare nv1_surface here
-SDL_Surface* ball_surface = NULL; // Add this line for ball_surface
+SDL_Surface* nv1_surface = NULL;
+SDL_Surface* ball_surface = NULL;
 SDL_Surface* nv2_surface = NULL;
-SDL_Surface* goal_surface = NULL; // Định nghĩa biến goal_surface ở đây
+SDL_Surface* goal_surface = NULL;
 SDL_Surface* goal02_surface = NULL;
 Mix_Music* gBackgroundMusic = NULL;
 Mix_Chunk* gSoccerKickSound = NULL;
@@ -62,13 +62,12 @@ int SDLCommonFunc::ShowMenu(SDL_Surface* des, TTF_Font* font) {
 
     SDL_Event m_event;
     bool quit_menu = false;
-    int menu_choice = -1; // Lựa chọn menu, ban đầu là -1 để không có lựa chọn nào được chọn
 
-    while (!quit_menu && menu_choice == -1) {
+    while (!quit_menu) {
         SDLCommonFunc::ApplySurface(g_img_menu, des, 0, 0);
 
         for (int i = 0; i < kMenuItemNum; ++i) {
-            text_menu[i].CreateGameText(des); // Tạo văn bản để hiển thị
+            text_menu[i].CreateGameText(des);
         }
 
         while (SDL_PollEvent(&m_event)) {
@@ -83,7 +82,6 @@ int SDLCommonFunc::ShowMenu(SDL_Surface* des, TTF_Font* font) {
 
                     for (int i = 0; i < kMenuItemNum; i++) {
                         if (SDLCommonFunc::CheckFocusWithRect(xm, ym, text_menu[i].GetRect())) {
-                            // Nếu chuột di chuyển qua vị trí của text menu
                             if (!selected[i]) {
                                 selected[i] = true;
                                 text_menu[i].SetColor(TextObject::RED_TEXT);
@@ -102,12 +100,12 @@ int SDLCommonFunc::ShowMenu(SDL_Surface* des, TTF_Font* font) {
                     ym = m_event.button.y;
                     for (int i = 0; i < kMenuItemNum; i++) {
                         if (CheckFocusWithRect(xm, ym, text_menu[i].GetRect())) {
-                            if (i == 0) { // Nút "Play Game"
-                                quit_menu = true; // Thoát khỏi menu sau khi chọn "Play Game"
-                                value = 1; // Trả về 1 để bắt đầu chơi game
-                            } else if (i == 1) { // Nút "Exit"
+                            if (i == 0) {
                                 quit_menu = true;
-                                value = 0; // Trả về 0 để thoát chương trình
+                                value = 1;
+                            } else if (i == 1) {
+                                quit_menu = true;
+                                value = 0;
                             }
                         }
                     }
@@ -119,7 +117,6 @@ int SDLCommonFunc::ShowMenu(SDL_Surface* des, TTF_Font* font) {
         }
         SDL_UpdateWindowSurface(gWindow);
     }
-    // Trả về lựa chọn menu của người dùng
     return value;
 }
 
@@ -138,14 +135,12 @@ bool SDLCommonFunc::initSDL_Mixer() {
     return true;
 }
 
-// Giải phóng SDL_mixer
 void SDLCommonFunc::closeSDL_Mixer() {
     Mix_CloseAudio();
 }
 
 bool SDLCommonFunc::loadMedia()
 {
-    // Loading success flag
     bool success = true;
 
     // Load goal cheering sound effect
@@ -176,9 +171,6 @@ bool SDLCommonFunc::loadMedia()
         printf("Failed to load character image nv1.png! SDL_image Error: %s\n", IMG_GetError());
         success = false;
     }
-
-    // Trong hàm loadMedia của Common_function.cpp
-
     // Load character image (nv2.png)
     nv2_surface = loadSurface("nv2.png");
     if (nv2_surface == NULL)
@@ -186,16 +178,6 @@ bool SDLCommonFunc::loadMedia()
         printf("Failed to load character image nv2.png! SDL_image Error: %s\n", IMG_GetError());
         success = false;
     }
-
-    // Set the color key for nv2_surface to remove the background color
-
-    // Trong hàm loadMedia của Common_function.cpp
-
-
-
-    // Apply nv2.png onto the background at the specified coordinates
-
-
 
     // Load ball image
     ball_surface = loadSurface("ball.png");
@@ -206,14 +188,11 @@ bool SDLCommonFunc::loadMedia()
     }
 
     // Set the color key for ball_surface to remove the background color
-    SDL_SetColorKey(ball_surface, SDL_TRUE, SDL_MapRGB(ball_surface->format, 0, 0, 0)); // Background màu đen
+    SDL_SetColorKey(ball_surface, SDL_TRUE, SDL_MapRGB(ball_surface->format, 0, 0, 0));
 
     // Set the coordinates for ball.png
-    int ball_x = SCREEN_WIDTH / 2 - 25; // Set the x coordinate
-    int ball_y = SCREEN_HEIGHT / 2 - 25; // Set the y coordinate
-
-    // Apply ball.png onto the background at the specified coordinates
-
+    int ball_x = SCREEN_WIDTH / 2 - 25;
+    int ball_y = SCREEN_HEIGHT / 2 - 25;
 
     // Load goal frame image (khungthanh.png)
     goal_surface = loadSurface("khungthanh.png");
@@ -227,10 +206,6 @@ bool SDLCommonFunc::loadMedia()
     // Set color key to remove background color (if needed)
     SDL_SetColorKey(goal_surface, SDL_TRUE, SDL_MapRGB(goal_surface->format, 0, 0, 0));
     }
-    // Set the color key for goal_surface to remove the background color (if needed)
-    // SDL_SetColorKey(goal_surface, SDL_TRUE, SDL_MapRGB(goal_surface->format, r, g, b));
-
-
 
     // Load goal frame image (khungthanh(02).png)
     goal02_surface = loadSurface("khungthanh(02).png");
@@ -249,12 +224,11 @@ bool SDLCommonFunc::loadMedia()
     int goal02_x = GOAL_2_X;
     int goal02_y = GOAL_2_Y;
 
-    // Apply khungthanh(02).png onto the background at the specified coordinates
     SDLCommonFunc::ApplySurface(goal02_surface, gPNGSurface, goal02_x, goal02_y);
 
 // Set the coordinates for khungthanh.png
-    int goal_x = GOAL_1_X; // Set the x coordinate
-    int goal_y = GOAL_1_Y; // Set the y coordinate
+    int goal_x = GOAL_1_X;
+    int goal_y = GOAL_1_Y;
 
     // Apply khungthanh.png onto the background at the specified coordinates
     SDLCommonFunc::ApplySurface(goal_surface, gPNGSurface, goal_x, goal_y);
@@ -318,7 +292,6 @@ SDL_Surface* SDLCommonFunc::loadSurface(std::string path)
 
 namespace SDLCommonFunc {
     void ApplySurface(SDL_Surface* src, SDL_Surface* des, int x, int y) {
-        // Định nghĩa của hàm ApplySurface
         SDL_Rect offset;
         offset.x = x;
         offset.y = y;

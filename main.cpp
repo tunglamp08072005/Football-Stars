@@ -6,9 +6,6 @@
 #include "khungthanh(02).h"
 #include "TextObject.h"
 
-// Định nghĩa biến toàn cục
-
-
 TextObject scoreText;
 TextObject gameTimeText;
 int scorePlayer1 = 0;
@@ -17,7 +14,6 @@ TTF_Font* g_font;
 TTF_Font* gameFont;
 TTF_Font* menuFont;
 
-// Định nghĩa các hàm
 bool init();
 void close();
 
@@ -25,7 +21,6 @@ bool init() {
 
     bool success = true;
 
-    // Khởi tạo SDL và các thành phần khác
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
         success = false;
@@ -42,7 +37,6 @@ bool init() {
             }
         }
 
-        // Khởi tạo font và cài đặt cho scoreText
         if(TTF_Init() < 0)
         {
             return false;
@@ -50,12 +44,10 @@ bool init() {
         g_font = TTF_OpenFont("tyso.ttf", 48);
         if (g_font == nullptr) {
             printf("Failed to load g_font! SDL_ttf Error: %s\n", TTF_GetError());
-            // Xử lý lỗi load font
         }
         gameFont = TTF_OpenFont("Game_Time.ttf", 36); // Thay đổi kích thước font tùy ý
         if (gameFont == nullptr) {
             printf("Failed to load game_font! SDL_ttf Error: %s\n", TTF_GetError());
-            // Xử lý lỗi load font
         }
         menuFont = TTF_OpenFont("menu.ttf", 48);
         if(menuFont == nullptr)
@@ -93,27 +85,20 @@ int main(int argc, char* args[]) {
     SDL_SetColorKey(nv2_surface, SDL_TRUE, SDL_MapRGB(nv2_surface->format, 0, 0, 0));
     SDL_SetColorKey(nv1_surface, SDL_TRUE, SDL_MapRGB(nv1_surface->format, 0, 0, 0));
 
-    //Uint32 startTime = SDL_GetTicks(); // Thời điểm bắt đầu game (miliseconds)
-    //Uint32 gameDuration = 120000; // Thời gian chơi là 2 phút (120000 miliseconds)
-
     bool play_game = false;
-    bool isGameStarted = false; // Biến để xác định trạng thái game đã bắt đầu hay chưa
-    Uint32 startTime = 0; // Thời điểm bắt đầu game (miliseconds)
-    Uint32 gameDuration = 120000; // Thời gian chơi là 2 phút (120000 miliseconds)
-
-//    SDL_Event e;
+    bool isGameStarted = false;
+    Uint32 startTime = 0;
+    Uint32 gameDuration = 90000;
 
     while (!quit) {
         int ret_menu = SDLCommonFunc::ShowMenu(gScreenSurface, menuFont);
         if (ret_menu == 0) {
-            // Thoát chương trình nếu người dùng chọn "Exit"
             quit = true;
             play_game = false;
         } else if (ret_menu == 1) {
-            // Bắt đầu chơi game nếu người dùng chọn "Play Game"
             play_game = true;
-            isGameStarted = true; // Đã bắt đầu game
-            startTime = SDL_GetTicks(); // Lưu thời điểm bắt đầu game
+            isGameStarted = true;
+            startTime = SDL_GetTicks();
             quit = false;
             Mix_PlayMusic(gBackgroundMusic, -1);
         }
@@ -127,22 +112,17 @@ int main(int argc, char* args[]) {
             human_object02.HandleInputAction(e);
         }
 
-         Uint32 currentTime = SDL_GetTicks(); // Thời điểm hiện tại (miliseconds)
-         Uint32 elapsedTime = currentTime - startTime; // Thời gian đã trôi qua từ khi bắt đầu game
+         Uint32 currentTime = SDL_GetTicks();
+         Uint32 elapsedTime = currentTime - startTime;
 
-         // Tính thời gian còn lại
          Uint32 remainingTime = gameDuration - elapsedTime;
 
          if (remainingTime <= 0) {
-             // Kết thúc game khi hết thời gian
              quit = true;
          }
 
-        // Tính toán số phút và giây còn lại
         int secondsRemaining = remainingTime / 1000;
 
-
-        SDL_FillRect(gScreenSurface, NULL, SDL_MapRGB(gScreenSurface->format, 0, 0, 0));
         scoreText.Show(gScreenSurface);
         SDLCommonFunc::ApplySurface(gPNGSurface, gScreenSurface, 0, 0);
 
@@ -173,20 +153,18 @@ int main(int argc, char* args[]) {
             std::string newScore = std::to_string(scorePlayer1) + " : " + std::to_string(scorePlayer2);
             scoreText.SetText(newScore);
             scoreText.SetPosition(SCREEN_WIDTH / 2 - 80, 10);
-            // Thực hiện chỉ một lần, không cần trong vòng lặp
             scoreText.CreateGameText(gScreenSurface);
         }
 
         if (gameFont == NULL) {
             printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());
         } else{
-            gameTimeText.SetFont(gameFont); // Sử dụng font đã load
-            gameTimeText.SetColor(TextObject::BLACK_TEXT); // Chọn màu cho chữ (ví dụ: trắng)
-            gameTimeText.SetPosition(0, 0); // Vị trí hiển thị của chữ trên màn hình
+            gameTimeText.SetFont(gameFont);
+            gameTimeText.SetColor(TextObject::BLACK_TEXT);
+            gameTimeText.SetPosition(0, 0);
             std::string timeString = "Time: " + std::to_string(secondsRemaining);
             gameTimeText.SetText(timeString);
 
-            // Hiển thị TextObject của thời gian lên màn hình
             gameTimeText.CreateGameText(gScreenSurface);
             if (secondsRemaining <= 0) {
             quit = true;
@@ -197,8 +175,7 @@ int main(int argc, char* args[]) {
 
         if (KhungThanh::CheckCollision(ball, human_object, human_object02) || KhungThanh02::CheckCollision(ball, human_object, human_object02)) {
             KhungThanh::ResetPosition(ball, human_object, human_object02);
-           // Tạo lại văn bản mới với điểm số cập nhật
-            scoreText.CreateGameText(gScreenSurface); // Cập nhật văn bản điểm số
+            scoreText.CreateGameText(gScreenSurface);
         }
 
         SDL_UpdateWindowSurface(gWindow);

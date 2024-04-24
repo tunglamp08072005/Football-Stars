@@ -4,12 +4,10 @@
 #include "MainObject.h"
 #include "MainObject(02).h"
 
-// khungthanh.cpp
 extern int scorePlayer1;
 extern int scorePlayer2;
 
 bool KhungThanh02::CheckCollision(Ball& ball, MainObject& main_object, MainObject02& main_object02) {
-    // Lấy tọa độ và tốc độ của quả bóng
     int ball_x = ball.GetRect().x;
     int ball_y = ball.GetRect().y;
     int ball_w = ball.GetRect().w;
@@ -36,12 +34,12 @@ bool KhungThanh02::CheckCollision(Ball& ball, MainObject& main_object, MainObjec
         StopBall(ball);
         // Play goal cheering sound effect
         Mix_PlayChannel(-1, gGoalCheeringSound, 0);
-        scorePlayer1++; // hoặc scorePlayer2++
+        scorePlayer1++;
         std::string newScore = std::to_string(scorePlayer1) + " : " + std::to_string(scorePlayer2);
         scoreText.SetText(newScore);
         return true;
     }
-    return false; // Không có va chạm
+    return false;
 }
 
 void KhungThanh02::ResetPosition(Ball& ball, MainObject& main_object, MainObject02& main_object02) {
@@ -53,7 +51,6 @@ void KhungThanh02::ResetPosition(Ball& ball, MainObject& main_object, MainObject
 
 
 void KhungThanh02::StopBall(Ball& ball) {
-    // Dừng chuyển động của quả bóng
     ball.SetMoveXVal(0);
     ball.SetMoveYVal(0);
 }
