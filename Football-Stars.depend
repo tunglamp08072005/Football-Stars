@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1712830039 source:d:\tung_lam\c++\football-stars\ball.cpp
+1713970558 source:d:\tung_lam\c++\football-stars\ball.cpp
 	"ball.h"
 	"Common_function.h"
 
@@ -19,10 +19,10 @@
 	<SDL_ttf.h>
 	"TextObject.h"
 
-1712823196 source:d:\tung_lam\c++\football-stars\baseobject.cpp
+1713970558 source:d:\tung_lam\c++\football-stars\baseobject.cpp
 	"baseObject.h"
 
-1713604132 source:d:\tung_lam\c++\football-stars\common_function.cpp
+1713970558 source:d:\tung_lam\c++\football-stars\common_function.cpp
 	"Common_function.h"
 	"MainObject.h"
 	<SDL_mixer.h>
@@ -34,7 +34,7 @@
 	"Common_function.h"
 	"Ball.h"
 
-1713607679 source:d:\tung_lam\c++\football-stars\main.cpp
+1713970558 source:d:\tung_lam\c++\football-stars\main.cpp
 	"Common_function.h"
 	"MainObject.h"
 	"MainObject(02).h"
@@ -43,7 +43,7 @@
 	"khungthanh(02).h"
 	"TextObject.h"
 
-1713112856 source:d:\tung_lam\c++\football-stars\mainobject(02).cpp
+1713970558 source:d:\tung_lam\c++\football-stars\mainobject(02).cpp
 	"MainObject(02).h"
 	"Common_function.h"
 	"khungthanh(02).h"
@@ -54,13 +54,13 @@
 	"Common_function.h"
 	"ball.h"
 
-1713112779 source:d:\tung_lam\c++\football-stars\mainobject.cpp
+1713970579 source:d:\tung_lam\c++\football-stars\mainobject.cpp
 	"MainObject.h"
 	"Common_function.h"
 	<iostream>
 	<cmath>
 
-1713027228 source:d:\tung_lam\c++\football-stars\khungthanh.cpp
+1713971805 source:d:\tung_lam\c++\football-stars\khungthanh.cpp
 	"khungthanh.h"
 	"Common_function.h"
 	"ball.h"
@@ -80,14 +80,14 @@
 	"MainObject.h"
 	"MainObject(02).h"
 
-1713027228 source:d:\tung_lam\c++\football-stars\khungthanh(02).cpp
+1713970557 source:d:\tung_lam\c++\football-stars\khungthanh(02).cpp
 	"khungthanh(02).h"
 	"Common_function.h"
 	"ball.h"
 	"MainObject.h"
 	"MainObject(02).h"
 
-1713604132 source:d:\tung_lam\c++\football-stars\textobject.cpp
+1713970558 source:d:\tung_lam\c++\football-stars\textobject.cpp
 	"TextObject.h"
 	"Common_function.h"
 
