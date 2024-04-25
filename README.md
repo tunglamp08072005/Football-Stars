@@ -58,6 +58,7 @@
 - Hình ảnh: lấy từ game trên mạng và cắt ra.
 - Âm thanh: pixabay.com.
 - Logic chính của game: tham khảo trên YouTube(Phát Triển Phần Mềm 123A-Z).
+- Ngoài ra khi sửa 1 số bug như xử lý va chạm hay khởi tạo font thì tham khảo ở trên stackoverflow.
 ## Kết luận
 - Em thấy mình đã trau dồi thêm 1 số kỹ năng trong việc tư duy trong viết code từ việc xử lý logic cũng như cách viết code hợp lý.
 - Một số kỹ năng vè chỉnh sửa hình ảnh, âm thanh.
