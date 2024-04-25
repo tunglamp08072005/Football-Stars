@@ -3,10 +3,10 @@
 ## TABLE OF CONTENT
 * [INTRODUCTION](#introduction)
 * [Chơi game](#chơi-game)
-* [Các thành phần trong game](#gamecomponents)
-* [Cách chơi](#Guide)
-* [Một số mã nguồn tham khảo](#Sourcecode)
-* [Video giới thiệu về game](#Video)
+* [Các thành phần trong game](#các-thành-phần-trong-game)
+* [Cách chơi](#cách-chơi)
+* [Một số mã nguồn tham khảo](#một-số-mã-nguồn-tham-khảo)
+* [Video giới thiệu về game](#video-giới-thiệu-về-game)
 ## INTRODUCTION
 - Họ và tên: 'Phạm Tùng Lâm - K68J - UET'
 - Mã sinh viên: 23020678
