@@ -9,7 +9,7 @@
 * [Kết luận](#kết-luận)
 * [Video giới thiệu về game](#video-giới-thiệu-về-game)
 ## INTRODUCTION
-- Họ và tên: 'Phạm Tùng Lâm - K68J - UET'
+- Họ và tên: Phạm Tùng Lâm - K68J - UET
 - Mã sinh viên: 23020678
 - Bài tập lớn: Football-Stars (INT2215_52 - Lập trình nâng cao)
 ## Chơi game 
