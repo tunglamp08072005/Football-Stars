@@ -17,7 +17,7 @@
 
 #define SCREEN_WIDTH  1200
 #define SCREEN_HEIGHT 600
-#define MAX_SPEED 1 // Tốc độ di chuyển tối đa
+#define MAX_SPEED 1
 
 // Loads individual image
 SDL_Surface* loadSurface(std::string path);
@@ -43,7 +43,7 @@ extern Mix_Music* gBackgroundMusic;
 extern Mix_Chunk* gSoccerKickSound;
 extern Mix_Chunk* gGoalCheeringSound;
 extern TTF_Font* g_font;
-extern TextObject scoreText; // Declare scoreText as an external global variable
+extern TextObject scoreText;
 extern TextObject gameTimeText;
 extern TTF_Font* gameFont;
 extern TTF_Font* menuFont;

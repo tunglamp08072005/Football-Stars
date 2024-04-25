@@ -19,7 +19,7 @@ public:
     bool CheckCollision(SDL_Rect a, SDL_Rect b);
     void HandleBallCollision(Ball& ball);
     void KickBall(Ball& ball);
-    void HandleMoveWithGoalLimit(); // Thêm khai báo của phương thức này
+    void HandleMoveWithGoalLimit();
     void HandleMoveWithGoalLimit02();
 private:
     int x_val;
