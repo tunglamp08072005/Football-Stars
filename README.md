@@ -20,6 +20,7 @@
 - 2 khung thành ở 2 bên để khi quả bóng được sút vào trong khung thành thì tỷ số sẽ được cập nhât.
 
 ![im](khungthanh.png)
+
 ![im](khungthanh(02).png)
 - Text thời gian để hiển thị thời gian còn lại của game.
 - Text tỷ số để hiển thị tỷ số của game.
