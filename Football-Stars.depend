@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1713970558 source:d:\tung_lam\c++\football-stars\ball.cpp
+1714054213 source:d:\tung_lam\c++\football-stars\ball.cpp
 	"ball.h"
 	"Common_function.h"
 
-1712830039 d:\tung_lam\c++\football-stars\ball.h
+1714054152 d:\tung_lam\c++\football-stars\ball.h
 	"baseObject.h"
 
-1713585555 d:\tung_lam\c++\football-stars\baseobject.h
+1714054547 d:\tung_lam\c++\football-stars\baseobject.h
 	<SDL.h>
 	<string>
 
-1713544292 d:\tung_lam\c++\football-stars\common_function.h
+1714054547 d:\tung_lam\c++\football-stars\common_function.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -30,7 +30,7 @@
 	"TextObject.h"
 	"TextObject.h"
 
-1712830039 d:\tung_lam\c++\football-stars\mainobject.h
+1714054547 d:\tung_lam\c++\football-stars\mainobject.h
 	"Common_function.h"
 	"Ball.h"
 
@@ -91,7 +91,7 @@
 	"TextObject.h"
 	"Common_function.h"
 
-1713587023 d:\tung_lam\c++\football-stars\textobject.h
+1714054547 d:\tung_lam\c++\football-stars\textobject.h
 	"baseObject.h"
 	<string>
 	<SDL_ttf.h>
