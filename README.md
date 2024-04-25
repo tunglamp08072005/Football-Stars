@@ -6,7 +6,7 @@
 * [Các thành phần trong game](#gamecomponents)
 * [Cách chơi](#Guide)
 * [Một số mã nguồn tham khảo](#Sourcecode)
-* Video giới thiệu về game)(#Video)
+* [Video giới thiệu về game](#Video)
 ## INTRODUCTION
 - Họ và tên: 'Phạm Tùng Lâm - K68J - UET'
 - Mã sinh viên: 23020678
