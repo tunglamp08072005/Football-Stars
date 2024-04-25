@@ -18,7 +18,7 @@
 ### 2.  Khi bạn chọn Play Game thì trò chơi sẽ bắt đầu
 ![im](field02.png)
 
-## Các thành phần trong game:
+## Các thành phần trong game
 - Nhân vật 1 đại diện cho người chơi 1.
  
 ![im](nv1.png)
