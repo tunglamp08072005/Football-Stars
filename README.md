@@ -9,12 +9,16 @@
 
 ## Các thành phần trong game:
 - Nhân vật 1 đại diện cho người chơi 1.
+ 
 ![im](nv1.png)
 - Nhân vật 2 đại diện cho người chơi 2.
+  
 ![im](nv2.png)
 - Qủa bóng ở giữa sân để khi xảy ra va chạm giữa 1 trong 2 nhân vật với quả bóng thì nó sẽ được sút.
+  
 ![im](ball.png)  
 - 2 khung thành ở 2 bên để khi quả bóng được sút vào trong khung thành thì tỷ số sẽ được cập nhât.
+
 ![im](khungthanh.png)
 ![im](khungthanh(02).png)
 - Text thời gian để hiển thị thời gian còn lại của game.
