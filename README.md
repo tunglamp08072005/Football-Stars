@@ -65,4 +65,4 @@
 - Cách tối ưu code, sắp xếp chúng sao cho hợp lý để game có thể chạy mượt mà và hợp lý.
 - Biết thêm về 1 số hàm trong SDL2.0 như các hàm để tải ảnh lên, tải âm thanh, tải text,....
 ## Video giới thiệu về game
-https://youtu.be/DtAHysC-XRM
+https://youtu.be/2SsKOTRtmQ4
