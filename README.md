@@ -1,4 +1,4 @@
-# GIỚI THIỆU GAME: Chơi 1 trận bóng thú vị với những người bạn. Đây là game 2 người chơi và trận đấu sẽ kéo dài 2 phút. Ghi bàn bằng cách sút bóng vào khung thành đối phương và giành chiến thắng.
+# GIỚI THIỆU GAME: Chơi 1 trận bóng thú vị với những người bạn. Đây là game 2 người chơi và trận đấu sẽ kéo dài 1 phút 30 giây. Ghi bàn bằng cách sút bóng vào khung thành đối phương và giành chiến thắng.
 ## TABLE OF CONTENT
 * [INTRODUCTION](#introduction)
 * [Chơi game](#chơi-game)
