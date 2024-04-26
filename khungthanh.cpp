@@ -23,7 +23,7 @@ bool KhungThanh::CheckCollision(Ball& ball, MainObject& main_object, MainObject0
             ball.SetMoveYVal(-ball_y_vel);
         }
     }
-    else if ((0 < ball_x && ball_x <  GOAL_1_X + goal_surface->w) && (GOAL_1_Y < ball_y && ball_y < GOAL_1_Y + goal_surface->h)) {
+    else if ((0 < ball_x && ball_x <  GOAL_1_X + goal_surface->w) && (GOAL_1_Y <= ball_y && ball_y < GOAL_1_Y + goal_surface->h)) {
         ResetPosition(ball, main_object, main_object02);
         StopBall(ball);
         // Play goal cheering sound effect
