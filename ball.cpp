@@ -10,10 +10,6 @@ Ball::Ball() {
     y_val = 0;
 }
 
-Ball::~Ball() {
-
-}
-
 void Ball::HandleMove() {
     if (!is_attached) {
 
